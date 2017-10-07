@@ -12,14 +12,24 @@ from settings.db import _db
 import random
 
 
-@api.route('/', methods=['GET'])
+@api.route('/kindle', methods=['GET'])
 def rrr():
     f = _db['k2'].find({},{'_id':0})
     fl = f.count()
     nu = random.randint(0,fl)
     last = f[nu]
-
     return jsonify(last)
+
+
+@api.route('/zhihu', methods=['GET'])
+def zhihu():
+    f = _db['zhihu_collection'].find({},{'_id':0})
+    fl = f.count()
+    nu = random.randint(0,fl)
+    last = f[nu]
+    return jsonify(last)
+
+
 
 
 # 获取某个指定的单词
